@@ -1,0 +1,6 @@
+version: '3'
+services:
+  smtp4dev:
+    image: rnwood/smtp4dev
+    ports:
+      - 3000:80
