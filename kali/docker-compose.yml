@@ -1,0 +1,11 @@
+version: '3'
+services:
+  kali:
+    image: danielguerra/ubuntu-xrdp:kali
+    volumes:
+      - ./home:/home
+    ports:
+      - 3389:3389
+      - 2222:22
+
+#docker run -d --name uxrdp --hostname terminalserver --shm-size 1g -p 3389:3389 danielguerra/ubuntu-xrdp:kali
