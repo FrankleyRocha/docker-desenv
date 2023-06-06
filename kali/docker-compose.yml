@@ -3,10 +3,13 @@ services:
   kali:
     build: .
     image: frakley/kali-rolling
-    volumes:
-      - ./home:/home
-    #restart: unless-stopped
-    #entrypoint: ["/etc/init.d/xrdp", "start"]
+    container_name: kali
+    hostname: kali
+    #volumes:
+    #  - ./home:/home
+    restart: unless-stopped
+    #restart: always
+    entrypoint: ["/entrypoint.sh"]
     ports:
-      - 3389:3389
+      - 3389:3390
       - 2222:22

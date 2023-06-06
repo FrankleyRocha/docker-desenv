@@ -14,6 +14,8 @@ RUN apt-get install -y kali-desktop-xfce xorg xrdp
 RUN echo "[i] Configuring xrdp to listen to port 3390 (but not starting the service)"
 RUN sed -i 's/port=3389/port=3390/g' /etc/xrdp/xrdp.ini
 
+RUN apt install -y dbus-x11
+
 RUN cat <<EOF | sudo tee /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
 [Allow Colord all Users]
 Identity=unix-user:*
@@ -23,5 +25,10 @@ ResultInactive=no
 ResultActive=yes
 EOF
 
-RUN adduser kali
-RUN echo kali:kali | sudo chpasswd
+# add the user
+RUN useradd --create-home kali
+RUN echo "kali:kali" | chpasswd
+RUN usermod -aG sudo kali
+
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
