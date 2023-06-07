@@ -1,8 +1,8 @@
 version: '3'
 services:
   kali:
-    build: .
-    image: frakley/kali-rolling
+    #build: .
+    image: rocha112358/kali-xrdp
     container_name: kali
     hostname: kali
     #volumes:
@@ -12,4 +12,4 @@ services:
     entrypoint: ["/entrypoint.sh"]
     ports:
       - 3389:3390
-      - 2222:22
+    #  - 2222:22
