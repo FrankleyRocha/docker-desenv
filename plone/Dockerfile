@@ -21,13 +21,7 @@ RUN useradd --create-home plone
 RUN echo "plone:plone" | chpasswd
 RUN usermod -aG sudo plone
 
-ADD ambiente_ubuntu.sh /home/plone/ambiente_ubuntu.sh
-RUN chmod +x /home/plone/ambiente_ubuntu.sh
-RUN chown plone:plone /home/plone/ambiente_ubuntu.sh
-
 USER plone
-#SHELL [ "/bin/bash", "-c" ]
-#ENV SHELL=/bin/bash
 
 RUN curl https://pyenv.run | bash
 RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
@@ -36,8 +30,12 @@ RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-#RUN ["/bin/bash", "-l", "-c", "~/ambiente_ubuntu.sh"]
+#ENV BASH_ENV "~/.bashrc"
+#SHELL ["/bin/bash","-c"]
 
-SHELL [ "/bin/bash", "-c" ]
-RUN source ~/.bashrc && ~/ambiente_ubuntu.sh
-RUN rm -rf ~/ambiente_ubuntu.sh
+#RUN source ~/.bashrc && pyenv install 3.10.12
+#RUN pyenv global 3.10.12
+
+#RUN nvm install 16
+#RUN npm i -g yo
+#RUN npm i -g yarn
