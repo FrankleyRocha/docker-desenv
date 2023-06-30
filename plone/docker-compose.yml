@@ -1,0 +1,15 @@
+version: '3'
+services:
+  plone:
+    build: .
+    container_name: plone
+    hostname: plone
+    #volumes:
+    #  - ./home:/home
+    restart: unless-stopped
+    #restart: always
+    entrypoint: ["/bin/bash"]
+    ports:
+      - 8080:8080
+      - 3000:3000
+      - 3001:3001
