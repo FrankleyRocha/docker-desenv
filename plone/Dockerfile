@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
 
+#ENV BASH_ENV "~/.profile"
+SHELL ["/bin/bash", "-ic"]
+
 RUN apt update
 RUN apt install -y \
         build-essential \
@@ -30,12 +33,14 @@ RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-#ENV BASH_ENV "~/.bashrc"
-#SHELL ["/bin/bash","-c"]
+RUN pyenv install 3.10.12
+RUN pyenv global 3.10.12
 
-#RUN source ~/.bashrc && pyenv install 3.10.12
-#RUN pyenv global 3.10.12
+RUN echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.bashrc
 
-#RUN nvm install 16
-#RUN npm i -g yo
-#RUN npm i -g yarn
+RUN nvm install 16
+RUN npm i -g yo
+RUN npm i -g yarn
+
+RUN pip install cookiecutter

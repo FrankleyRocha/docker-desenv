@@ -34,6 +34,7 @@ source ~/.bashrc
 
 pyenv install 3.10.12
 pyenv global 3.10.12
+pip install cookiecutter
 
 nvm install 16
 npm i -g yo
