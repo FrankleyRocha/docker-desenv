@@ -8,3 +8,5 @@ docker run -it --rm \
     -p 3390:3390 \
     rocha112358/kali-xrdp
 ````
+
+e acessar via RDP localhost:3390
