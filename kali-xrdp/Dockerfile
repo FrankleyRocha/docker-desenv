@@ -1,4 +1,6 @@
-FROM kalilinux/kali-rolling
+FROM rocha112358/kali-desenv
+
+USER root
 
 # install packages
 #RUN apt-get update \
@@ -25,10 +27,6 @@ ResultInactive=no
 ResultActive=yes
 EOF
 
-# add the user
-RUN useradd --create-home kali
-RUN echo "kali:kali" | chpasswd
-RUN usermod -aG sudo kali
-
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+ENTRYPOINT /entrypoint.sh
