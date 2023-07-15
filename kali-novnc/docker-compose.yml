@@ -1,0 +1,15 @@
+version: '3'
+services:
+  kali:
+    #build: .
+    image: rocha112358/kali-xrdp
+    container_name: kali
+    hostname: kali
+    #volumes:
+    #  - ./home:/home
+    restart: unless-stopped
+    #restart: always
+    entrypoint: ["/entrypoint.sh"]
+    ports:
+      - 3389:3390
+    #  - 2222:22
