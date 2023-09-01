@@ -6,5 +6,5 @@ services:
       - "1521:1521"
       - "5500:5500"
     volumes:
-      - ./oradata:/opt/oracle/oradata:rw
-      - ./admin:/opt/oracle/admin:rw
+      - ./oradata:/opt/oracle/oradata
+      - ./admin:/opt/oracle/admin
