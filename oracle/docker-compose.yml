@@ -6,6 +6,9 @@ services:
     ports:
       - "1521:1521"
       - "5500:5500"
+    environment:
+      - ORACLE_PWD=batatinha
+      - ORACLE_CHARACTERSET=WE8ISO8859P1
     volumes:
       - ./oradata:/opt/oracle/oradata
       - ./admin:/opt/oracle/admin
