@@ -12,4 +12,4 @@ services:
     volumes:
       - ./oradata:/opt/oracle/oradata
       - ./admin:/opt/oracle/admin
-      - ./sqlnet.ora:/opt/oracle/oradata/dbconfig/FREE/sqlnet.ora
+      - ./sqlnet.ora:/opt/oracle/oradata/dbconfig/FREE/sqlnet.ora:ro
