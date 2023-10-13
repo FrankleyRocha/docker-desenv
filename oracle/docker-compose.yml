@@ -1,7 +1,8 @@
 version: '3'
 services:
   oracle:
-    image: oracle/database:23.2.0-free
+    #image: oracle/database:23.2.0-free
+    image: container-registry.oracle.com/database/free #https://www.oracle.com/database/free/get-started
     container_name: oracle
     ports:
       - "1521:1521"
@@ -10,6 +11,10 @@ services:
       - ORACLE_PWD=batatinha
       - ORACLE_CHARACTERSET=WE8ISO8859P1
     volumes:
-      - ./oradata:/opt/oracle/oradata
-      - ./admin:/opt/oracle/admin
-      - ./sqlnet.ora:/opt/oracle/oradata/dbconfig/FREE/sqlnet.ora:ro
+      - oracle-data:/opt/oracle/oradata
+      #- oracle-dpdump:/opt/oracle/admin/FREE/dpdump
+      #- ./sqlnet.ora:/opt/oracle/oradata/dbconfig/FREE/sqlnet.ora:ro
+
+volumes:
+  oracle-data:
+    external: true
