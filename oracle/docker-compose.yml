@@ -9,7 +9,8 @@ services:
       - "5500:5500"
     environment:
       - ORACLE_PWD=batatinha
-      - ORACLE_CHARACTERSET=WE8ISO8859P1
+      #- ORACLE_CHARACTERSET=WE8ISO8859P1
+      - NLS_LANG=AMERICAN_BRAZIL.WE8ISO8859P1
     volumes:
       - oracle-data:/opt/oracle/oradata
       #- oracle-dpdump:/opt/oracle/admin/FREE/dpdump
