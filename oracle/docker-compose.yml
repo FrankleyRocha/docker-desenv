@@ -1,20 +1,22 @@
 version: '3'
 services:
   oracle:
-    #image: oracle/database:23.2.0-free
-    image: container-registry.oracle.com/database/free #https://www.oracle.com/database/free/get-started
+    image: oracle/database:23.3.0-free #https://github.com/oracle/docker-images.git
+    #image: container-registry.oracle.com/database/free #https://www.oracle.com/database/free/get-started
     container_name: oracle
     ports:
       - "1521:1521"
       - "5500:5500"
     environment:
       - ORACLE_PWD=batatinha
-      #- ORACLE_CHARACTERSET=WE8ISO8859P1
-      - NLS_LANG=AMERICAN_BRAZIL.WE8ISO8859P1
+      - ORACLE_CHARACTERSET=WE8ISO8859P1
+      - NLS_LANG=AMERICAN_AMERICA.WE8ISO8859P1
+      #- NLS_LANGWE8ISO8859P1
     volumes:
       - oracle-data:/opt/oracle/oradata
       #- oracle-dpdump:/opt/oracle/admin/FREE/dpdump
       #- ./sqlnet.ora:/opt/oracle/oradata/dbconfig/FREE/sqlnet.ora:ro
+      #- ./oracle-free-23c.conf:/etc/sysconfig/oracle-free-23c.conf:ro
 
 volumes:
   oracle-data:
